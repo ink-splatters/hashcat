@@ -72,7 +72,7 @@ ifeq ($(UNAME),Darwin)
 CC                      := clang
 CXX                     := clang++
 # the sed -i option of macOS requires a parameter for the backup file (we just use "")
-AR                      := /usr/bin/ar
+AR                      := ar
 SED                     := /usr/bin/sed
 SED_IN_PLACE            := -i ""
 DARWIN_VERSION          := $(shell uname -r | cut -d. -f1)
@@ -360,10 +360,10 @@ LFLAGS_NATIVE           += -liconv
 
 ifeq ($(IS_APPLE_SILICON),1)
 CFLAGS_NATIVE           += -arch arm64
-CFLAGS_NATIVE           += -arch x86_64
+# CFLAGS_NATIVE           += -arch x86_64
 ifeq ($(SHARED),1)
 LFLAGS_NATIVE           += -arch arm64
-LFLAGS_NATIVE           += -arch x86_64
+#LFLAGS_NATIVE           += -arch x86_64
 endif
 endif
 

@@ -49,20 +49,20 @@
 
         packages = {
           default = common.stdenv.mkDerivation {
-              name = "hashcat";
+            name = "hashcat";
 
-              src=./.;
+            src = ./.;
 
-              buildPhase=''
-                make
-              '';
+            buildPhase = ''
+              make
+            '';
 
-              installPhase=''
-                mkdir $out
-                make install --dest $out
-              '';
+            installPhase = ''
+              mkdir $out
+              make install --dest $out
+            '';
 
-              enableParallelBuilding = true;
+            enableParallelBuilding = true;
 
           } // common;
         };

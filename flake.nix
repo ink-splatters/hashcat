@@ -48,7 +48,7 @@
           import ./nix/shells.nix { inherit pkgs common self system; };
 
         packages = {
-          default = common.stdenv.mkDerivation {
+          default = pkgs.llvmPackages.stdenv.mkDerivation {
             name = "hashcat";
 
             src = ./.;

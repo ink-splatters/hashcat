@@ -77,8 +77,7 @@ SED                     := /usr/bin/sed
 SED_IN_PLACE            := -i ""
 DARWIN_VERSION          := $(shell uname -r | cut -d. -f1)
 # lipo from /usr/bin needs Xcode which is not desired dependency
-# IS_APPLE_SILICON        := $(shell lipo /bin/zsh -verify_arch arm64e && echo 1 || echo 0)
-IS_APPLE_SILICON	:= $(shell [[ -f /usr/bin/arch && $(/usr/bin/arch) == "arm64" ]] && echo 1 || echo 0)
+IS_APPLE_SILICON	:= $(shell command -v arch 1>/dev/null && [ $(shell arch) == "arm64" ] && echo 1 || echo 0)
 endif
 
 ifneq (,$(filter $(UNAME),FreeBSD NetBSD))

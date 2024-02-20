@@ -36,20 +36,23 @@
         inherit (pkgs) callPackage;
 
         common = callPackage ./nix/common.nix { inherit system; };
-      in {
+      in with pkgs; {
 
         checks = import ./nix/checks.nix {
           inherit pkgs pre-commit-hooks system common;
         };
 
-        formatter = pkgs.nixfmt;
+        formatter = nixfmt;
 
         devShells =
           import ./nix/shells.nix { inherit pkgs common self system; };
 
         packages = {
-          default = pkgs.llvmPackages.stdenv.mkDerivation {
+          default = llvmPackages_17.stdenv.mkDerivation {
             name = "hashcat";
+
+            inherit (common)
+              NIX_CFLAGS_COMPILE LDFLAGS buildInputs nativeBuildInputs;
 
             src = ./.;
 
@@ -64,7 +67,7 @@
 
             enableParallelBuilding = true;
 
-          } // common;
+          };
         };
 
       });

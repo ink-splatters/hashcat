@@ -243,10 +243,7 @@ endif
 endif
 
 ifeq ($(DEBUG),0)
-CFLAGS                  += -O2
-ifneq ($(UNAME),Darwin)
-LFLAGS                  += -s
-endif
+CFLAGS                  += -O3
 else
 ifeq ($(DEBUG),1)
 ifneq ($(UNAME),Darwin)
@@ -308,7 +305,7 @@ endif
 # unrar
 ifeq ($(ENABLE_UNRAR),1)
 CFLAGS                  += -I$(DEPS_UNRAR_PATH)
-LFLAGS                  += -lstdc++
+LFLAGS                  += -lc++ -lc++abi
 endif
 
 ##

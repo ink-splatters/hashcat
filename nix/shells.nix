@@ -4,7 +4,7 @@ with pkgs; rec {
   default = mkShell.override { inherit (llvmPackages_17) stdenv; } {
     name = "cpp-shell";
 
-    inherit (common) CFLAGS LDFLAGS buildInputs nativeBuildInputs;
+    inherit (common) NIX_CFLAGS_COMPILE LDFLAGS buildInputs nativeBuildInputs;
 
     shellHook = self.checks.${system}.pre-commit-check.shellHook + ''
       export PS1="\n\[\033[01;36m\]‹⊂˖˖› \\$ \[\033[00m\]"

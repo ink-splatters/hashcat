@@ -27,10 +27,6 @@
   outputs = { nixpkgs, flake-utils, pre-commit-hooks, self, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
-        # pkgs = import nixpkgs {
-        #   inherit system;
-        #   # config.allowUnsupportedSystem = true;
-        # };
         pkgs = nixpkgs.legacyPackages.${system};
 
         inherit (pkgs) callPackage;

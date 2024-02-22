@@ -48,7 +48,7 @@
             name = "hashcat";
 
             inherit (common)
-              NIX_CFLAGS_COMPILE LDFLAGS buildInputs nativeBuildInputs;
+              CFLAGS CXXFLAGS LDFLAGS buildInputs nativeBuildInputs;
 
             src = ./.;
 

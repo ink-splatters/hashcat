@@ -63,6 +63,8 @@
 
             enableParallelBuilding = true;
 
+            shellHook = "  export PATH=\"$out/usr/local/bin:$PATH\"\n";
+
           };
         };
 

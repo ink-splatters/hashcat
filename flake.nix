@@ -59,13 +59,10 @@
 
             installPhase = ''
               mkdir $out
-              make DESTDIR=$out install
+              make DESTDIR=$out PREFIX= install
             '';
 
             enableParallelBuilding = true;
-
-            shellHook = "  export PATH=\"$out/usr/local/bin:$PATH\"\n";
-
           };
         };
 

@@ -58,7 +58,7 @@
 
             installPhase = ''
               mkdir $out
-              make install --dest $out
+              make DESTDIR=$out install
             '';
 
             enableParallelBuilding = true;

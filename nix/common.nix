@@ -4,7 +4,7 @@ let
   inherit (llvmPackages_17) libcxx libcxxabi bintools;
 in rec {
   CFLAGS = lib.optionalString ("${system}" == "aarch64-darwin")
-    "-mcpu=apple-m1 -fuse-ld=lld -flto=full";
+    "-mcpu=apple-m1 -flto=full";
   CXXFLAGS = "${CFLAGS}";
   LDFLAGS = "-fuse-ld=lld -flto=full";
 

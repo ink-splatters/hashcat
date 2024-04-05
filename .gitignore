@@ -24,6 +24,8 @@ obj/*.o
 obj/*.a
 include/CL
 tools/luks_tests
-.direnv
 .DS_Store
+/.direnv
 /.pre-commit-config.yaml
+/result
+
